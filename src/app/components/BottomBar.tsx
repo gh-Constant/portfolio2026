@@ -24,16 +24,16 @@ const BottomBar = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50">
+    <div className="fixed bottom-0 left-0 right-0 z-50 text-white" style={{ mixBlendMode: 'difference' }}>
       <div className="max-w-full mx-auto px-6 py-4">
-        <div className="grid grid-cols-3 items-center text-base" style={{mixBlendMode: 'exclusion'}}>
-          <div className="text-white justify-self-start">
+        <div className="grid grid-cols-3 items-center text-base">
+          <div className="justify-self-start">
             constantsuchet@gmail.com
           </div>
-          <div className="text-white font-medium justify-self-center">
+          <div className="font-medium justify-self-center">
             FRANCE
           </div>
-          <div className="text-white font-mono justify-self-end">
+          <div className="font-mono justify-self-end">
             {currentTime} GMT+1
           </div>
         </div>
