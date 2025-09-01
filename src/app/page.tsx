@@ -29,13 +29,13 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground pb-20">
       {/* Header */}
-      <header className="border-b border-foreground/20 py-8">
-        <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl font-bold mb-2">John Developer</h1>
-          <p className="text-xl text-foreground/80">Full Stack Developer</p>
-          <p className="mt-4 text-foreground/70 max-w-2xl">
+      <header className="border-b border-foreground/20 py-16 pt-32">
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          <h1 className="text-6xl font-bold mb-4">Constant Suchet</h1>
+          <p className="text-2xl text-foreground/80 mb-6">Full Stack Developer</p>
+          <p className="mt-6 text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
             Passionate about creating clean, efficient, and user-friendly web applications. 
             I enjoy solving complex problems and turning ideas into reality through code.
           </p>
@@ -43,7 +43,7 @@ export default function Home() {
       </header>
 
       {/* Projects Section */}
-      <section className="py-16">
+      <section id="projects" className="py-16">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">Projects</h2>
           <div className="grid gap-8 md:grid-cols-2">
@@ -68,7 +68,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-16 border-t border-foreground/20">
+      <section id="skills" className="py-16 border-t border-foreground/20">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">Skills</h2>
           <div className="grid gap-8 md:grid-cols-3">
@@ -89,7 +89,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 border-t border-foreground/20">
+      <section id="contact" className="py-16 border-t border-foreground/20">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
           <p className="text-foreground/80 mb-8 max-w-2xl mx-auto">
@@ -122,7 +122,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-foreground/20 py-8">
         <div className="max-w-4xl mx-auto px-6 text-center text-foreground/60">
-          <p>&copy; 2024 John Developer. All rights reserved.</p>
+          <p>&copy; 2024 Constant Suchet. All rights reserved.</p>
         </div>
       </footer>
     </div>

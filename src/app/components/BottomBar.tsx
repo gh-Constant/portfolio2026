@@ -1,0 +1,45 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
+const BottomBar = () => {
+  const [currentTime, setCurrentTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const frenchTime = now.toLocaleTimeString('fr-FR', {
+        timeZone: 'Europe/Paris',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+      setCurrentTime(frenchTime);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50">
+      <div className="max-w-full mx-auto px-6 py-4">
+        <div className="grid grid-cols-3 items-center text-base" style={{mixBlendMode: 'exclusion'}}>
+          <div className="text-white justify-self-start">
+            constantsuchet@gmail.com
+          </div>
+          <div className="text-white font-medium justify-self-center">
+            FRANCE
+          </div>
+          <div className="text-white font-mono justify-self-end">
+            {currentTime} GMT+1
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BottomBar;
