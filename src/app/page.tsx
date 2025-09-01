@@ -1,31 +1,19 @@
+import Link from 'next/link';
+
 export default function Home() {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with user authentication, payment processing, and inventory management.",
-      skills: ["React", "Node.js", "MongoDB", "Stripe API"]
-    },
-    {
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates and team collaboration features.",
-      skills: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"]
-    },
-    {
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard with location-based forecasts and interactive charts.",
-      skills: ["Vue.js", "Chart.js", "Weather API", "CSS3"]
-    },
-    {
-      title: "Portfolio Website",
-      description: "A minimalist portfolio website showcasing projects and skills with clean design principles.",
-      skills: ["Next.js", "Tailwind CSS", "TypeScript", "Responsive Design"]
+      href: '/projects/chronosync',
+      title: "Chronosync",
+      description: "A full-stack solution for synchronizing data across multiple platforms.",
+      skills: ["Vue.js", "Express", "Backend", "Frontend", "Web Dev", "Software Dev", "C++", "PowerShell"]
     }
   ];
 
   const skills = {
-    "Frontend": ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
-    "Backend": ["Node.js", "Express.js", "Python", "Django", "PostgreSQL", "MongoDB", "REST APIs"],
-    "Tools & Others": ["Git", "Docker", "AWS", "Figma", "Jest", "Webpack", "Linux", "Agile"]
+    "Frontend": ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Chart.js", "Responsive Design"],
+    "Backend": ["Node.js", "Express.js", "PostgreSQL", "Socket.io"],
+    "Tools & Others": ["Git", "Docker", "AWS", "Figma", "Jest", "Webpack", "Linux", "Agile", "C++", "PowerShell", "Weather API"]
   };
 
   return (
@@ -48,20 +36,22 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-12 text-center">Projects</h2>
           <div className="grid gap-8 md:grid-cols-2">
             {projects.map((project, index) => (
-              <div key={index} className="border border-foreground/20 p-6 hover:border-foreground/40 transition-colors">
-                <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                <p className="text-foreground/80 mb-4 leading-relaxed">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.skills.map((skill, skillIndex) => (
-                    <span 
-                      key={skillIndex} 
-                      className="px-3 py-1 text-sm border border-foreground/30 bg-foreground/5 hover:bg-foreground/10 transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+              <Link href={project.href} key={index}>
+                <div className="border border-foreground/20 p-6 hover:border-foreground/40 transition-colors h-full">
+                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                  <p className="text-foreground/80 mb-4 leading-relaxed">{project.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.skills.map((skill, skillIndex) => (
+                      <span 
+                        key={skillIndex} 
+                        className="px-3 py-1 text-sm border border-foreground/30 bg-foreground/5 hover:bg-foreground/10 transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

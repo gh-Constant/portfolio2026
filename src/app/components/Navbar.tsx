@@ -5,9 +5,13 @@ import { useTheme } from '../contexts/ThemeContext';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { HiCode } from 'react-icons/hi';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,9 +23,13 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -34,11 +42,8 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Brand Logo */}
-          <div className="flex items-center space-x-3">
-            <button 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center space-x-3 hover:opacity-80 transition-opacity group"
-            >
+          <Link href="/">
+            <div className="flex items-center space-x-3 hover:opacity-80 transition-opacity group cursor-pointer">
               <div className="p-2 bg-foreground text-background rounded-lg group-hover:scale-105 transition-transform">
                 <HiCode size={20} />
               </div>
@@ -46,8 +51,8 @@ const Navbar = () => {
                 <span className="text-xl font-bold tracking-tight">Constant Suchet</span>
                 <span className="text-xs text-foreground/60 font-medium">Full Stack Developer</span>
               </div>
-            </button>
-          </div>
+            </div>
+          </Link>
           
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
