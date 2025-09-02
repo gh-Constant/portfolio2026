@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
 export default function Home() {
   const projects = [
@@ -88,21 +89,28 @@ export default function Home() {
            </p>
           <div className="flex justify-center gap-8 flex-wrap">
             <a 
-              href="mailto:john@example.com" 
-              className="border border-foreground/30 px-6 py-3 hover:bg-foreground hover:text-background transition-colors"
+              href="mailto:constantsuchet@gmail.com" 
+              className="flex items-center gap-3 border border-foreground/30 px-6 py-3 hover:bg-foreground hover:text-background transition-colors"
             >
+              <FiMail />
               Email
             </a>
             <a 
-              href="https://github.com/johndeveloper" 
-              className="border border-foreground/30 px-6 py-3 hover:bg-foreground hover:text-background transition-colors"
+              href="https://github.com/gh-Constant" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 border border-foreground/30 px-6 py-3 hover:bg-foreground hover:text-background transition-colors"
             >
+              <FiGithub />
               GitHub
             </a>
             <a 
-              href="https://linkedin.com/in/johndeveloper" 
-              className="border border-foreground/30 px-6 py-3 hover:bg-foreground hover:text-background transition-colors"
+              href="https://www.linkedin.com/in/constant-suchet-031145213/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 border border-foreground/30 px-6 py-3 hover:bg-foreground hover:text-background transition-colors"
             >
+              <FiLinkedin />
               LinkedIn
             </a>
           </div>
