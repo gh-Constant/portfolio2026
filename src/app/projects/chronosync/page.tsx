@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import { motion, AnimatePresence } from 'framer-motion';
+import ImageModal from '../../components/ImageModal';
 
 export default function ChronoSyncPage() {
   const [selectedImage, setSelectedImage] = useState<{src: string, alt: string} | null>(null);
@@ -17,25 +17,6 @@ export default function ChronoSyncPage() {
     setSelectedImage(null);
   };
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && selectedImage) {
-        closeImageModal();
-      }
-    };
-
-    if (selectedImage) {
-      document.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
-    };
-  }, [selectedImage]);
   return (
     <div className="min-h-screen bg-background text-foreground pb-20">
       <header className="border-b border-foreground/20 py-16 pt-32">
@@ -435,44 +416,11 @@ export default function ChronoSyncPage() {
       </main>
       
       {/* Image Modal */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
-            onClick={closeImageModal}
-          >
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="relative w-full h-full flex items-center justify-center"
-            >
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  closeImageModal();
-                }}
-                className="absolute top-4 right-4 cursor-pointer text-white text-2xl font-bold bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
-              >
-                ×
-              </button>
-              <Image 
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                width={1600}
-                height={1000}
-                className="min-w-[70vw] max-w-[95vw] min-h-[70vh] max-h-[95vh] w-auto h-auto object-contain rounded-lg"
-                onClick={(e) => e.stopPropagation()}
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ImageModal 
+        imageUrl={selectedImage ? selectedImage.src : null}
+        altText={selectedImage ? selectedImage.alt : ''}
+        onClose={closeImageModal}
+      />
     </div>
   );
 }
