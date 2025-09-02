@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Constant Suchet",
+    "subtitle": "Développeur Full Stack",
+    "description": "Passionné par la création d'applications web propres, efficaces et conviviales. J'aime résoudre des problèmes complexes et transformer des idées en réalité grâce au code.",
+    "projectsTitle": "Projets",
+    "skillsTitle": "Compétences"
+  },
+  "skills": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "toolsOthers": "Outils et Autres"
+  },
+  "common": {
+    "backToPortfolio": "← Retour au Portfolio",
+    "viewProject": "Voir le Projet",
+    "technologiesUsed": "Technologies Utilisées",
+    "projectOverview": "Aperçu du Projet",
+    "myWork": "Mon Travail",
+    "technicalSkills": "Compétences Techniques Démontrées",
+    "gameArchitecture": "Architecture du Jeu",
+    "aiImplementation": "Implémentation de l'IA",
+    "userInterface": "Interface Utilisateur",
+    "projectScreenshots": "Les captures d'écran et démos du projet seront ajoutées ici.",
+    "projectDetails": "Détails du Projet",
+    "projectGallery": "Galerie du Projet",
+    "teamSize": "Taille de l'Équipe",
+    "teamMembers": "Membres de l'Équipe",
+    "duration": "Durée",
+    "status": "Statut",
+    "projectType": "Type de Projet"
+  },
+  "contact": {
+    "description": "Je suis toujours intéressé par de nouvelles opportunités et collaborations. N'hésitez pas à me contacter si vous souhaitez travailler ensemble.",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "footer": {
+    "email": "constantsuchet@gmail.com",
+    "location": "FRANCE",
+    "timezone": "GMT+1",
+    "copyright": "© 2024 Constant Suchet. Tous droits réservés."
+  },
+  "language": {
+    "select": "Sélectionner la Langue",
+    "english": "English",
+    "french": "Français"
+  },
+  "theme": {
+    "light": "Mode Clair",
+    "dark": "Mode Sombre",
+    "toggle": "Basculer le Thème"
+  },
+  "meta": {
+    "title": "Portfolio Développeur",
+    "description": "Un portfolio simple en noir et blanc présentant des projets et compétences"
+  }
+}

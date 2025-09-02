@@ -6,10 +6,13 @@ import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import ImageModal from '../../components/ImageModal';
 import ProjectDetails from '../../components/ProjectDetails';
-import { projectDetails } from '../../config/projectDetails';
+import { useTranslation } from '../../contexts/I18nContext';
+import { useProjectDetails } from '../../hooks/useProjectDetails';
 
 export default function ChronoSyncPage() {
   const [selectedImage, setSelectedImage] = useState<{src: string, alt: string} | null>(null);
+  const { t } = useTranslation();
+  const { projectDetails, isLoading } = useProjectDetails();
   const details = projectDetails.chronosync;
 
   const openImageModal = (src: string, alt: string) => {
@@ -19,6 +22,17 @@ export default function ChronoSyncPage() {
   const closeImageModal = () => {
     setSelectedImage(null);
   };
+
+  if (isLoading || !details) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-foreground mx-auto mb-4"></div>
+          <p className="text-lg">Loading project details...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground pb-20">
@@ -48,22 +62,21 @@ export default function ChronoSyncPage() {
         </div>
 
         <div className="prose prose-invert mx-auto">
-          <h2 className="text-3xl font-bold mb-6">Project Details</h2>
+          <h2 className="text-3xl font-bold mb-6">{t('common.projectDetails', 'Project Details')}</h2>
           <ProjectDetails details={details} />
           
-          <h2 className="text-3xl font-bold mb-6">Project Overview</h2>
+          <h2 className="text-3xl font-bold mb-6">{t('common.projectOverview', 'Project Overview')}</h2>
           <p className="text-lg leading-relaxed mb-8">
-            ChronoSync represents a modern approach to time management, specifically designed for developers and creative professionals. 
-            The application seamlessly integrates web and desktop technologies to provide a unified experience across all platforms.
+            {t('projects.chronosync.overview', 'ChronoSync represents a modern approach to time management, specifically designed for developers and creative professionals. The application seamlessly integrates web and desktop technologies to provide a unified experience across all platforms.')}
           </p>
           
           <div className="text-center my-16">
             <div className="inline-block border-2 border-foreground/30 bg-foreground/5 px-8 py-6 rounded-lg shadow-lg">
-              <h1 className="text-5xl font-bold mb-0">My Work</h1>
+              <h1 className="text-5xl font-bold mb-0">{t('common.myWork', 'My Work')}</h1>
             </div>
           </div>
           
-          <h2 className="text-3xl font-bold mb-6 mt-12">Architecture</h2>
+          <h2 className="text-3xl font-bold mb-6 mt-12">{t('projects.chronosync.sections.architecture.title', 'Architecture')}</h2>
           
           {/* Architecture image */}
           <div className="mb-8 text-center relative group">
@@ -84,44 +97,26 @@ export default function ChronoSyncPage() {
           </div>
           
           <p className="text-lg leading-relaxed mb-6">
-            Figure 2 shows a screenshot of the &apos;packages&apos; folder from ChronoSync&apos;s GitHub repository. It contains four directories: 
-            desktop, mobile, web, and shared. Each corresponds to a different version of the application (desktop, mobile, and web browser), 
-            while the shared folder contains common code used across all platforms. This demonstrates the use of a mono-repository structure - 
-            a single project grouping all platforms together, making it easy to share code.
+            {t('projects.chronosync.sections.architecture.content.paragraph1', 'Figure 2 shows a screenshot of the \'packages\' folder from ChronoSync\'s GitHub repository. It contains four directories: desktop, mobile, web, and shared. Each corresponds to a different version of the application (desktop, mobile, and web browser), while the shared folder contains common code used across all platforms. This demonstrates the use of a mono-repository structure - a single project grouping all platforms together, making it easy to share code.')}
           </p>
           
           <p className="text-lg leading-relaxed mb-6">
-            As indicated in the caption, this mono-repository was set up using Nx, a tool designed to organize this type of project, 
-            and pnpm, a modern package manager used to install, compile, and manage different parts of the application. This structure 
-            enables parallel development across multiple platforms while maintaining overall project coherence.
+            {t('projects.chronosync.sections.architecture.content.paragraph2', 'As indicated in the caption, this mono-repository was set up using Nx, a tool designed to organize this type of project, and pnpm, a modern package manager used to install, compile, and manage different parts of the application. This structure enables parallel development across multiple platforms while maintaining overall project coherence.')}
           </p>
           
           <p className="text-lg leading-relaxed mb-6">
-            This organization demonstrates a solid understanding of multi-platform architecture. Grouping different versions of the 
-            application within a single repository allows for code reuse, centralizes business logic, and limits duplication. It also 
-            facilitates project scalability and simplifies synchronization between teams or modules. While I&apos;ve only experienced this 
-            architecture in this project, I feel capable of effectively integrating into or contributing to other similarly structured projects.
+            {t('projects.chronosync.sections.architecture.content.paragraph3', 'This organization demonstrates a solid understanding of multi-platform architecture. Grouping different versions of the application within a single repository allows for code reuse, centralizes business logic, and limits duplication. It also facilitates project scalability and simplifies synchronization between teams or modules. While I\'ve only experienced this architecture in this project, I feel capable of effectively integrating into or contributing to other similarly structured projects.')}
           </p>
           
           <p className="text-lg leading-relaxed mb-6">
-            The choice of pnpm over npm or yarn aligns with performance and maintainability goals. In a JavaScript/TypeScript project, 
-            the package manager is an essential tool for installing and organizing project libraries. I chose pnpm for its concrete 
-            advantages: fast installation, disk space efficiency through symlinks, and better dependency management. This allowed me to 
-            effectively manage multiple packages in parallel within a mono-repo environment while maintaining consistent versions. I now 
-            consider myself quite proficient in using package managers like pnpm, npm, or bun, having used them in most of my personal 
-            and professional projects, particularly when creating websites like task managers.
+            {t('projects.chronosync.sections.architecture.content.paragraph4', 'The choice of pnpm over npm or yarn aligns with performance and maintainability goals. In a JavaScript/TypeScript project, the package manager is an essential tool for installing and organizing project libraries. I chose pnpm for its concrete advantages: fast installation, disk space efficiency through symlinks, and better dependency management. This allowed me to effectively manage multiple packages in parallel within a mono-repo environment while maintaining consistent versions. I now consider myself quite proficient in using package managers like pnpm, npm, or bun, having used them in most of my personal and professional projects, particularly when creating websites like task managers.')}
           </p>
           
           <p className="text-lg leading-relaxed mb-6">
-              The implementation of the shared package demonstrates a clear intention to optimize project structure. This module contains 
-              common functions, types, or models used across all platforms, ensuring uniform logic and reducing errors or inconsistencies. 
-              However, I believe I still have room for improvement in using this type of package, particularly when sharing code between 
-              different technologies or languages - an aspect I didn&apos;t explore deeply in this project. On the other hand, regarding general 
-              code modularity, I believe I have a good level of expertise. For example, in my &apos;Power X&apos; project, a video game developed 
-              in Java, I applied the MVC pattern, which helped me better organize the code and make it more readable and maintainable.
-            </p>
+            {t('projects.chronosync.sections.architecture.content.paragraph5', 'The implementation of the shared package demonstrates a clear intention to optimize project structure. This module contains common functions, types, or models used across all platforms, ensuring uniform logic and reducing errors or inconsistencies. However, I believe I still have room for improvement in using this type of package, particularly when sharing code between different technologies or languages - an aspect I didn\'t explore deeply in this project. On the other hand, regarding general code modularity, I believe I have a good level of expertise. For example, in my \'Power X\' project, a video game developed in Java, I applied the MVC pattern, which helped me better organize the code and make it more readable and maintainable.')}
+          </p>
            
-           <h2 className="text-3xl font-bold mb-6 mt-12">Express.js API Implementation</h2>
+           <h2 className="text-3xl font-bold mb-6 mt-12">{t('projects.chronosync.sections.expressApi.title', 'Express.js API Implementation')}</h2>
            
            {/* Express.js API image */}
            <div className="mb-8 text-center relative group">
@@ -142,10 +137,7 @@ export default function ChronoSyncPage() {
            </div>
            
            <p className="text-lg leading-relaxed mb-6">
-             Figure 3 is a screenshot of the appUsage.ts file, a TypeScript file that defines backend routes for the ChronoSync application. 
-             This file is part of the API developed with Express.js, a framework for creating web servers with JavaScript. An API 
-             (Application Programming Interface) is a set of entry points (called routes) that the client (application on phone, computer, 
-             or browser) can use to request data from the server. In this specific case, we observe five routes, each allowing retrieval 
+             {t('projects.chronosync.sections.expressApi.content.paragraph1', 'Figure 3 is a screenshot of the appUsage.ts file, a TypeScript file that defines backend routes for the ChronoSync application. This file is part of the API developed with Express.js, a framework for creating web servers with JavaScript. An API (Application Programming Interface) is a set of entry points (called routes) that the client (application on phone, computer, or browser) can use to request data from the server. In this specific case, we observe five routes, each allowing retrieval')} 
              of usage statistics (time spent on each application) according to different periods: daily, weekly, monthly, yearly, and custom. 
              These routes therefore allow the user interface to display charts or summaries according to the period selected by the user.
            </p>
@@ -397,7 +389,7 @@ export default function ChronoSyncPage() {
          </div>
           
         <div className="mt-12">
-          <h3 className="text-2xl font-bold mb-6 text-center">Technologies Used</h3>
+          <h3 className="text-2xl font-bold mb-6 text-center">{t('common.technologiesUsed', 'Technologies Used')}</h3>
           <div className="flex flex-wrap gap-2 justify-center">
             {['Vue.js', 'Express', 'Backend', 'Frontend', 'Web Dev', 'Software Dev', 'C++', 'PowerShell'].map((skill, skillIndex) => (
               <span 
@@ -422,7 +414,7 @@ export default function ChronoSyncPage() {
             href="/" 
             className="inline-block border border-foreground/30 px-6 py-3 hover:bg-foreground hover:text-background transition-colors"
           >
-            ← Back to Portfolio
+            {t('common.backToPortfolio', '← Back to Portfolio')}
           </Link>
         </div>
       </main>

@@ -6,10 +6,13 @@ import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import ImageModal from '../../components/ImageModal';
 import ProjectDetails from '../../components/ProjectDetails';
-import { projectDetails } from '../../config/projectDetails';
+import { useTranslation } from '../../contexts/I18nContext';
+import { useProjectDetails } from '../../hooks/useProjectDetails';
 
 export default function PauvocoderPage() {
   const [selectedImage, setSelectedImage] = useState<{src: string, alt: string} | null>(null);
+  const { t } = useTranslation();
+  const { projectDetails, isLoading } = useProjectDetails();
   const details = projectDetails.pauvocoder;
 
   const openImageModal = (src: string, alt: string) => {
@@ -19,6 +22,17 @@ export default function PauvocoderPage() {
   const closeImageModal = () => {
     setSelectedImage(null);
   };
+
+  if (isLoading || !details) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-foreground mx-auto mb-4"></div>
+          <p className="text-lg">Loading project details...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground pb-20">
@@ -51,7 +65,7 @@ export default function PauvocoderPage() {
           <h2 className="text-3xl font-bold mb-6">Project Details</h2>
           <ProjectDetails details={details} />
           
-          <h2 className="text-3xl font-bold mb-6">Project Overview</h2>
+          <h2 className="text-3xl font-bold mb-6">{t('common.projectOverview', 'Project Overview')}</h2>
           <p className="text-lg leading-relaxed mb-8">
             Pauvocoder is an innovative audio processing application that implements advanced vocoding techniques for real-time audio manipulation. 
             The project demonstrates expertise in digital signal processing, audio engineering, and real-time audio processing algorithms.
@@ -59,7 +73,7 @@ export default function PauvocoderPage() {
           
           <div className="text-center my-16">
             <div className="inline-block border-2 border-foreground/30 bg-foreground/5 px-8 py-6 rounded-lg shadow-lg">
-              <h1 className="text-5xl font-bold mb-0">My Work</h1>
+              <h1 className="text-5xl font-bold mb-0">{t('common.myWork', 'My Work')}</h1>
             </div>
           </div>
           
@@ -91,7 +105,7 @@ export default function PauvocoderPage() {
             in a working software solution.
           </p>
           
-          <h2 className="text-3xl font-bold mb-6 mt-12">Skills Demonstrated</h2>
+          <h2 className="text-3xl font-bold mb-6 mt-12">{t('common.technicalSkills', 'Technical Skills Demonstrated')}</h2>
           
           <ul className="list-disc list-inside text-lg leading-relaxed mb-6 space-y-2">
             <li>Advanced C++ programming for audio applications</li>
@@ -104,7 +118,7 @@ export default function PauvocoderPage() {
           
           <div className="mt-12 pt-8 border-t border-foreground/20">
             <Link href="/" className="inline-flex items-center text-foreground/70 hover:text-foreground transition-colors">
-              ← Back to Portfolio
+              {t('common.backToPortfolio', '← Back to Portfolio')}
             </Link>
           </div>
         </div>

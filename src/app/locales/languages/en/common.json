@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Constant Suchet",
+    "subtitle": "Full Stack Developer",
+    "description": "Passionate about creating clean, efficient, and user-friendly web applications. I enjoy solving complex problems and turning ideas into reality through code.",
+    "projectsTitle": "Projects",
+    "skillsTitle": "Skills"
+  },
+  "skills": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "toolsOthers": "Tools & Others"
+  },
+  "common": {
+    "backToPortfolio": "← Back to Portfolio",
+    "viewProject": "View Project",
+    "technologiesUsed": "Technologies Used",
+    "projectOverview": "Project Overview",
+    "myWork": "My Work",
+    "technicalSkills": "Technical Skills Demonstrated",
+    "gameArchitecture": "Game Architecture",
+    "aiImplementation": "AI Implementation",
+    "userInterface": "User Interface",
+    "projectScreenshots": "Project screenshots and demos will be added here.",
+    "projectDetails": "Project Details",
+    "projectGallery": "Project Gallery",
+    "teamSize": "Team Size",
+    "teamMembers": "Team Members",
+    "duration": "Duration",
+    "status": "Status",
+    "projectType": "Project Type"
+  },
+  "contact": {
+    "description": "I'm always interested in new opportunities and collaborations. Feel free to reach out if you'd like to work together.",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "footer": {
+    "email": "constantsuchet@gmail.com",
+    "location": "FRANCE",
+    "timezone": "GMT+1",
+    "copyright": "© 2024 Constant Suchet. All rights reserved."
+  },
+  "language": {
+    "select": "Select Language",
+    "english": "English",
+    "french": "Français"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode",
+    "toggle": "Toggle Theme"
+  },
+  "meta": {
+    "title": "Developer Portfolio",
+    "description": "A simple black and white portfolio showcasing projects and skills"
+  }
+}

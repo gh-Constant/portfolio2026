@@ -1,0 +1,44 @@
+{
+  "chronosync": {
+    "teamSize": 2,
+    "teamMembers": [
+      {
+        "name": "Constant Suchet",
+        "role": "Database, Web (Frontend/Backend) & PowerShell Developer",
+        "link": ""
+      },
+      {
+        "name": "Timothé Sandt",
+        "role": "C++ Software Developer",
+        "link": "https://github.com/TimotheSandt"
+      }
+    ],
+    "duration": "4 months",
+    "status": "Paused",
+    "projectType": "Personal Project"
+  },
+  "pauvocoder": {
+    "teamSize": 1,
+    "teamMembers": [
+      {
+        "name": "Constant Suchet",
+        "role": "Lead Developer & Audio Engineer",
+        "link": "https://github.com/gh-Constant"
+      }
+    ],
+    "duration": "3 months",
+    "projectType": "Personal/Academic Project"
+  },
+  "puissancex": {
+    "teamSize": 1,
+    "teamMembers": [
+      {
+        "name": "Constant Suchet",
+        "role": "Game Developer & AI Programmer",
+        "link": "https://github.com/gh-Constant"
+      }
+    ],
+    "duration": "4 months",
+    "projectType": "Academic Project"
+  }
+}

@@ -1,19 +1,34 @@
 'use client';
 
 import { FiUsers, FiBriefcase } from 'react-icons/fi';
-import { ProjectDetails as ProjectDetailsType } from '../config/projectDetails';
+import { useTranslation } from '../contexts/I18nContext';
+
+export interface TeamMember {
+  name: string;
+  role: string;
+  link?: string;
+}
+
+export interface ProjectDetails {
+  teamSize: number;
+  teamMembers: TeamMember[];
+  duration: string;
+  status?: string;
+  projectType: string;
+}
 
 interface ProjectDetailsProps {
-  details: ProjectDetailsType;
+  details: ProjectDetails;
 }
 
 export default function ProjectDetails({ details }: ProjectDetailsProps) {
+  const { t } = useTranslation();
   return (
     <div className="grid md:grid-cols-2 gap-6 mb-8 not-prose">
       <div className="bg-foreground/5 p-4 rounded-lg border border-foreground/20">
         <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
           <FiUsers className="w-5 h-5" />
-          Team Members ({details.teamMembers.length})
+          {t('common.teamMembers', 'Team Members')} ({details.teamMembers.length})
         </h3>
         <div className="space-y-2">
           {details.teamMembers.map((member, index) => (
@@ -43,19 +58,19 @@ export default function ProjectDetails({ details }: ProjectDetailsProps) {
       </div>
       
       <div className="bg-foreground/5 p-4 rounded-lg border border-foreground/20">
-        <h3 className="text-lg font-semibold mb-2">Duration</h3>
+        <h3 className="text-lg font-semibold mb-2">{t('common.duration', 'Duration')}</h3>
         <p className="text-foreground/80">{details.duration}</p>
       </div>
       
       {details.status && (
         <div className="bg-foreground/5 p-4 rounded-lg border border-foreground/20">
-          <h3 className="text-lg font-semibold mb-2">Status</h3>
+          <h3 className="text-lg font-semibold mb-2">{t('common.status', 'Status')}</h3>
           <p className="text-foreground/80">{details.status}</p>
         </div>
       )}
       
       <div className="bg-foreground/5 p-4 rounded-lg border border-foreground/20">
-        <h3 className="text-lg font-semibold mb-2">Project Type</h3>
+        <h3 className="text-lg font-semibold mb-2">{t('common.projectType', 'Project Type')}</h3>
         <p className="text-foreground/80">{details.projectType}</p>
       </div>
     </div>

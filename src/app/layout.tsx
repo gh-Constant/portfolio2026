@@ -4,6 +4,7 @@ import "./globals.css";
 import BottomBar from "./components/BottomBar";
 import Navbar from "./components/Navbar";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { I18nProvider } from "./contexts/I18nContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          <Navbar />
-          {children}
-          <BottomBar />
-        </ThemeProvider>
+        <I18nProvider>
+          <ThemeProvider>
+            <Navbar />
+            {children}
+            <BottomBar />
+          </ThemeProvider>
+        </I18nProvider>
       </body>
     </html>
   );

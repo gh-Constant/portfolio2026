@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { useTranslation } from '../contexts/I18nContext';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { HiCode } from 'react-icons/hi';
+import LanguageSelector from './LanguageSelector';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -11,6 +13,7 @@ import { usePathname } from 'next/navigation';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -49,10 +52,10 @@ const Navbar = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight">
-                  Constant Suchet
+                  {t('home.title', 'Constant Suchet')}
                 </span>
                 <span className="text-sm text-foreground/60 font-medium">
-                  Full Stack Developer
+                  {t('home.subtitle', 'Full Stack Developer')}
                 </span>
               </div>
             </div>
@@ -64,26 +67,27 @@ const Navbar = () => {
               onClick={() => scrollToSection('projects')}
               className="relative px-3 py-2 text-foreground/70 hover:text-foreground transition-colors duration-200 font-medium group"
             >
-              Projects
+              {t('nav.projects', 'Projects')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-full"></span>
             </button>
             <button 
               onClick={() => scrollToSection('skills')}
               className="relative px-3 py-2 text-foreground/70 hover:text-foreground transition-colors duration-200 font-medium group"
             >
-              Skills
+              {t('home.skillsTitle', 'Skills')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-full"></span>
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
               className="relative px-3 py-2 text-foreground/70 hover:text-foreground transition-colors duration-200 font-medium group"
             >
-              Contact
+              {t('nav.contact', 'Contact')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-full"></span>
             </button>
             
-            {/* Theme Toggle */}
-            <div className="ml-6 pl-6 border-l border-foreground/20">
+            {/* Language Selector & Theme Toggle */}
+            <div className="ml-6 pl-6 border-l border-foreground/20 flex items-center space-x-3">
+              <LanguageSelector />
               <button
                 onClick={toggleTheme}
                 className={`p-2.5 rounded-lg border transition-all duration-200 hover:scale-105 ${
@@ -91,7 +95,7 @@ const Navbar = () => {
                     ? 'border-white/20 hover:border-white/40 hover:bg-white/10 text-white/70 hover:text-white' 
                     : 'border-black/20 hover:border-black/40 hover:bg-black/10 text-black/70 hover:text-black'
                 }`}
-                aria-label="Toggle theme"
+                aria-label={t('theme.toggle', 'Toggle theme')}
               >
                 {theme === 'light' ? 
                   <MdDarkMode size={18} className="transition-transform duration-200 hover:rotate-12" /> : 
@@ -102,7 +106,8 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="md:hidden flex items-center space-x-3">
+            <LanguageSelector />
             <button
               onClick={toggleTheme}
               className={`p-2.5 rounded-lg border transition-all duration-200 ${
@@ -110,7 +115,7 @@ const Navbar = () => {
                   ? 'border-white/20 hover:border-white/40 hover:bg-white/10 text-white/70 hover:text-white' 
                   : 'border-black/20 hover:border-black/40 hover:bg-black/10 text-black/70 hover:text-black'
               }`}
-              aria-label="Toggle theme"
+              aria-label={t('theme.toggle', 'Toggle theme')}
             >
               {theme === 'light' ? 
                 <MdDarkMode size={18} className="transition-transform duration-200 hover:rotate-12" /> : 

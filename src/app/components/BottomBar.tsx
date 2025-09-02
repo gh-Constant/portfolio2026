@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from '../contexts/I18nContext';
 
 const BottomBar = () => {
   const [currentTime, setCurrentTime] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     const updateTime = () => {
@@ -28,13 +30,13 @@ const BottomBar = () => {
       <div className="max-w-full mx-auto px-6 py-4">
         <div className="grid grid-cols-3 items-center text-base">
           <div className="justify-self-start">
-            constantsuchet@gmail.com
+            {t('footer.email', 'constantsuchet@gmail.com')}
           </div>
           <div className="font-medium justify-self-center">
-            FRANCE
+            {t('footer.location', 'FRANCE')}
           </div>
           <div className="font-mono justify-self-end">
-            {currentTime} GMT+1
+            {currentTime} {t('footer.timezone', 'GMT+1')}
           </div>
         </div>
       </div>
