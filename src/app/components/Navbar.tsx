@@ -6,12 +6,14 @@ import { useTranslation } from '../contexts/I18nContext';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { HiCode } from 'react-icons/hi';
 import LanguageSelector from './LanguageSelector';
+import HamburgerIcon from './HamburgerIcon';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation();
   const pathname = usePathname();
@@ -34,6 +36,7 @@ const Navbar = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -54,7 +57,7 @@ const Navbar = () => {
                 <span className="text-xl font-bold tracking-tight">
                   {t('home.title', 'Constant Suchet')}
                 </span>
-                <span className="text-sm text-foreground/60 font-medium">
+                <span className="hidden sm:block text-sm text-foreground/60 font-medium">
                   {t('home.subtitle', 'Full Stack Developer')}
                 </span>
               </div>
@@ -106,11 +109,46 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-3">
+          <div className="md:hidden flex items-center">
+            <HamburgerIcon 
+              isOpen={isMenuOpen} 
+              onClick={() => setIsMenuOpen(!isMenuOpen)} 
+              className="z-50"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div 
+        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-background/95 backdrop-blur-lg transition-transform duration-300 ease-in-out ${
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
+          <button 
+            onClick={() => scrollToSection('projects')}
+            className="text-2xl font-medium text-foreground/80 hover:text-foreground transition-colors"
+          >
+            {t('nav.projects', 'Projects')}
+          </button>
+          <button 
+            onClick={() => scrollToSection('skills')}
+            className="text-2xl font-medium text-foreground/80 hover:text-foreground transition-colors"
+          >
+            {t('home.skillsTitle', 'Skills')}
+          </button>
+          <button 
+            onClick={() => scrollToSection('contact')}
+            className="text-2xl font-medium text-foreground/80 hover:text-foreground transition-colors"
+          >
+            {t('nav.contact', 'Contact')}
+          </button>
+          <div className="pt-8 mt-8 border-t border-foreground/20 flex items-center space-x-6">
             <LanguageSelector />
             <button
               onClick={toggleTheme}
-              className={`p-2.5 rounded-lg border transition-all duration-200 ${
+              className={`p-3 rounded-lg border transition-all duration-200 hover:scale-105 ${
                 theme === 'dark' 
                   ? 'border-white/20 hover:border-white/40 hover:bg-white/10 text-white/70 hover:text-white' 
                   : 'border-black/20 hover:border-black/40 hover:bg-black/10 text-black/70 hover:text-black'
@@ -118,8 +156,8 @@ const Navbar = () => {
               aria-label={t('theme.toggle', 'Toggle theme')}
             >
               {theme === 'light' ? 
-                <MdDarkMode size={18} className="transition-transform duration-200 hover:rotate-12" /> : 
-                <MdLightMode size={18} className="transition-transform duration-200 hover:rotate-12" />
+                <MdDarkMode size={20} /> : 
+                <MdLightMode size={20} />
               }
             </button>
           </div>
