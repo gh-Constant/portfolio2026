@@ -452,9 +452,12 @@ export default function ChronoSyncPage() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="relative w-full h-full flex items-center justify-center"
             >
-              <button 
-                onClick={closeImageModal}
-                className="absolute top-4 right-4 text-white text-2xl font-bold bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeImageModal();
+                }}
+                className="absolute top-4 right-4 cursor-pointer text-white text-2xl font-bold bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
               >
                 ×
               </button>
