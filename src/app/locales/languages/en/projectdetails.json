@@ -18,24 +18,44 @@
     "projectType": "Personal Project"
   },
   "pauvocoder": {
-    "teamSize": 1,
+    "teamSize": 2,
     "teamMembers": [
       {
         "name": "Constant Suchet",
-        "role": "Lead Developer & Audio Engineer",
+        "role": "Lead Developer",
         "link": "https://github.com/gh-Constant"
+      },
+      {
+        "name": "Tahar Amine Touzi",
+        "role": "Developer",
+        "link": ""
       }
     ],
     "duration": "3 months",
-    "projectType": "Personal/Academic Project"
+    "projectType": "Academic Project"
   },
   "puissancex": {
-    "teamSize": 1,
+    "teamSize": 4,
     "teamMembers": [
       {
         "name": "Constant Suchet",
-        "role": "Game Developer & AI Programmer",
+        "role": "Developer",
         "link": "https://github.com/gh-Constant"
+      },
+      {
+        "name": "Maxime Miguet",
+        "role": "Developer",
+        "link": ""
+      },
+      {
+        "name": "Timothé Sandt",
+        "role": "Developer",
+        "link": "https://github.com/TimotheSandt"
+      },
+      {
+        "name": "Tahar Amine Touzi",
+        "role": "Developer",
+        "link": ""
       }
     ],
     "duration": "4 months",
