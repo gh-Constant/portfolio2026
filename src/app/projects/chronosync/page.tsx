@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { FiSearch } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ChronoSyncPage() {
   const [selectedImage, setSelectedImage] = useState<{src: string, alt: string} | null>(null);
@@ -45,7 +47,7 @@ export default function ChronoSyncPage() {
 
       <main className="max-w-4xl mx-auto px-6 py-16">
         {/* Main presentation image */}
-        <div className="mb-12 text-center">
+        <div className="mb-12 text-center relative group">
           <Image 
             src="/images/chronosync/image.webp" 
             alt="ChronoSync Application Overview" 
@@ -54,6 +56,11 @@ export default function ChronoSyncPage() {
             className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
             onClick={() => openImageModal("/images/chronosync/image.webp", "ChronoSync Application Overview")}
           />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="bg-black bg-opacity-50 rounded-full p-3">
+              <FiSearch className="w-8 h-8 text-white" />
+            </div>
+          </div>
         </div>
 
         <div className="prose prose-invert mx-auto">
@@ -66,7 +73,7 @@ export default function ChronoSyncPage() {
           <h2 className="text-3xl font-bold mb-6 mt-12">Architecture</h2>
           
           {/* Architecture image */}
-          <div className="mb-8 text-center">
+          <div className="mb-8 text-center relative group">
             <Image 
               src="/images/chronosync/nx.webp" 
               alt="NX monorepo architecture" 
@@ -75,6 +82,11 @@ export default function ChronoSyncPage() {
               className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
               onClick={() => openImageModal("/images/chronosync/nx.webp", "NX monorepo architecture")}
             />
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <div className="bg-black bg-opacity-50 rounded-full p-3">
+                <FiSearch className="w-8 h-8 text-white" />
+              </div>
+            </div>
             <p className="text-sm text-foreground/70 mt-2 italic">Figure 2 : NX monorepo architecture for optimized project management</p>
           </div>
           
@@ -119,7 +131,7 @@ export default function ChronoSyncPage() {
            <h2 className="text-3xl font-bold mb-6 mt-12">Express.js API Implementation</h2>
            
            {/* Express.js API image */}
-           <div className="mb-8 text-center">
+           <div className="mb-8 text-center relative group">
              <Image 
                src="/images/chronosync/express.webp" 
                alt="Express.js API for centralized data and service management" 
@@ -128,6 +140,11 @@ export default function ChronoSyncPage() {
                className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
                onClick={() => openImageModal("/images/chronosync/express.webp", "Express.js API for centralized data and service management")}
              />
+             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+               <div className="bg-black bg-opacity-50 rounded-full p-3">
+                 <FiSearch className="w-8 h-8 text-white" />
+               </div>
+             </div>
              <p className="text-sm text-foreground/70 mt-2 italic">Figure 3: Express.js API for centralized data and service management</p>
            </div>
            
@@ -176,7 +193,7 @@ export default function ChronoSyncPage() {
            <h2 className="text-3xl font-bold mb-6 mt-12">Database Architecture</h2>
            
            {/* Database image */}
-           <div className="mb-8 text-center">
+           <div className="mb-8 text-center relative group">
              <Image 
                src="/images/chronosync/database.webp" 
                alt="Database architecture and data management system" 
@@ -185,6 +202,11 @@ export default function ChronoSyncPage() {
                className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
                onClick={() => openImageModal("/images/chronosync/database.webp", "Database architecture and data management system")}
              />
+             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+               <div className="bg-black bg-opacity-50 rounded-full p-3">
+                 <FiSearch className="w-8 h-8 text-white" />
+               </div>
+             </div>
              <p className="text-sm text-foreground/70 mt-2 italic">Figure 4: Database architecture and data management system</p>
            </div>
            
@@ -211,7 +233,7 @@ export default function ChronoSyncPage() {
            <h2 className="text-3xl font-bold mb-6 mt-12">Web & Desktop Authentication</h2>
            
            {/* Web login interface */}
-           <div className="mb-8 text-center">
+           <div className="mb-8 text-center relative group">
              <Image 
                src="/images/chronosync/login.webp" 
                alt="Web login interface with modern authentication system" 
@@ -220,11 +242,16 @@ export default function ChronoSyncPage() {
                className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
                onClick={() => openImageModal("/images/chronosync/login.webp", "Web login interface with modern authentication system")}
              />
+             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+               <div className="bg-black bg-opacity-50 rounded-full p-3">
+                 <FiSearch className="w-8 h-8 text-white" />
+               </div>
+             </div>
              <p className="text-sm text-foreground/70 mt-2 italic">Figure 5: Web login interface with modern authentication system</p>
            </div>
            
            {/* Authentication code */}
-           <div className="mb-8 text-center">
+           <div className="mb-8 text-center relative group">
              <Image 
                src="/images/chronosync/loginuser.webp" 
                alt="Part of the code executed after authentication" 
@@ -233,6 +260,11 @@ export default function ChronoSyncPage() {
                className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
                onClick={() => openImageModal("/images/chronosync/loginuser.webp", "Part of the code executed after authentication")}
              />
+             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+               <div className="bg-black bg-opacity-50 rounded-full p-3">
+                 <FiSearch className="w-8 h-8 text-white" />
+               </div>
+             </div>
              <p className="text-sm text-foreground/70 mt-2 italic">Figure 6: Part of the code executed after authentication</p>
            </div>
            
@@ -243,7 +275,7 @@ export default function ChronoSyncPage() {
            <h3 className="text-2xl font-bold mb-6 mt-8">Desktop Application</h3>
            
            {/* Desktop login screen */}
-           <div className="mb-8 text-center">
+           <div className="mb-8 text-center relative group">
              <Image 
                src="/images/chronosync/logindesktop.webp" 
                alt="Desktop application login screen" 
@@ -252,6 +284,11 @@ export default function ChronoSyncPage() {
                className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
                onClick={() => openImageModal("/images/chronosync/logindesktop.webp", "Desktop application login screen")}
              />
+             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+               <div className="bg-black bg-opacity-50 rounded-full p-3">
+                 <FiSearch className="w-8 h-8 text-white" />
+               </div>
+             </div>
              <p className="text-sm text-foreground/70 mt-2 italic">Figure 7: Desktop application login screen</p>
            </div>
            
@@ -278,7 +315,7 @@ export default function ChronoSyncPage() {
            </p>
            
            {/* Email notification system */}
-           <div className="mb-8 text-center">
+           <div className="mb-8 text-center relative group">
              <Image 
                src="/images/chronosync/email.webp" 
                alt="Email notification system for project updates and reminders" 
@@ -287,6 +324,11 @@ export default function ChronoSyncPage() {
                className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
                onClick={() => openImageModal("/images/chronosync/email.webp", "Email notification system for project updates and reminders")}
              />
+             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="bg-black bg-opacity-50 rounded-full p-3">
+                  <FiSearch className="w-8 h-8 text-white" />
+                </div>
+              </div>
              <p className="text-sm text-foreground/70 mt-2 italic">Email notification system for project updates and reminders</p>
            </div>
            
@@ -297,7 +339,7 @@ export default function ChronoSyncPage() {
            <h3 className="text-2xl font-bold mb-6 mt-8">Advanced Algorithms</h3>
            
            {/* Blur detection algorithm */}
-           <div className="mb-8 text-center">
+           <div className="mb-8 text-center relative group">
              <Image 
                src="/images/chronosync/blurryAlgo.webp" 
                alt="Blur detection algorithm for focus tracking and productivity measurement" 
@@ -306,11 +348,16 @@ export default function ChronoSyncPage() {
                className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
                onClick={() => openImageModal("/images/chronosync/blurryAlgo.webp", "Blur detection algorithm for focus tracking and productivity measurement")}
              />
+             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="bg-black bg-opacity-50 rounded-full p-3">
+                  <FiSearch className="w-8 h-8 text-white" />
+                </div>
+              </div>
              <p className="text-sm text-foreground/70 mt-2 italic">Blur detection algorithm for focus tracking and productivity measurement</p>
            </div>
            
            {/* Session closure algorithm */}
-           <div className="mb-8 text-center">
+           <div className="mb-8 text-center relative group">
              <Image 
                src="/images/chronosync/closeAlgo.webp" 
                alt="Session closure algorithm for automatic time tracking and data preservation" 
@@ -319,6 +366,11 @@ export default function ChronoSyncPage() {
                className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
                onClick={() => openImageModal("/images/chronosync/closeAlgo.webp", "Session closure algorithm for automatic time tracking and data preservation")}
              />
+             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="bg-black bg-opacity-50 rounded-full p-3">
+                  <FiSearch className="w-8 h-8 text-white" />
+                </div>
+              </div>
              <p className="text-sm text-foreground/70 mt-2 italic">Session closure algorithm for automatic time tracking and data preservation</p>
            </div>
            
@@ -329,7 +381,7 @@ export default function ChronoSyncPage() {
            <h3 className="text-2xl font-bold mb-6 mt-8">Integrations</h3>
            
            {/* ClickUp integration */}
-           <div className="mb-8 text-center">
+           <div className="mb-8 text-center relative group">
              <Image 
                src="/images/chronosync/clickup.webp" 
                alt="ClickUp integration for seamless project management workflow" 
@@ -338,6 +390,11 @@ export default function ChronoSyncPage() {
                className="w-full h-auto rounded-lg border border-foreground/20 cursor-pointer hover:opacity-80 transition-opacity"
                onClick={() => openImageModal("/images/chronosync/clickup.webp", "ClickUp integration for seamless project management workflow")}
              />
+             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="bg-black bg-opacity-50 rounded-full p-3">
+                  <FiSearch className="w-8 h-8 text-white" />
+                </div>
+              </div>
              <p className="text-sm text-foreground/70 mt-2 italic">ClickUp integration for seamless project management workflow</p>
            </div>
            
@@ -378,29 +435,41 @@ export default function ChronoSyncPage() {
       </main>
       
       {/* Image Modal */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
-          onClick={closeImageModal}
-        >
-          <div className="relative w-full h-full flex items-center justify-center">
-            <button 
-              onClick={closeImageModal}
-              className="absolute top-4 right-4 text-white text-2xl font-bold bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+            onClick={closeImageModal}
+          >
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative w-full h-full flex items-center justify-center"
             >
-              ×
-            </button>
-            <Image 
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              width={1600}
-              height={1000}
-              className="min-w-[70vw] max-w-[95vw] min-h-[70vh] max-h-[95vh] w-auto h-auto object-contain rounded-lg"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </div>
-        </div>
-      )}
+              <button 
+                onClick={closeImageModal}
+                className="absolute top-4 right-4 text-white text-2xl font-bold bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+              >
+                ×
+              </button>
+              <Image 
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                width={1600}
+                height={1000}
+                className="min-w-[70vw] max-w-[95vw] min-h-[70vh] max-h-[95vh] w-auto h-auto object-contain rounded-lg"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
