@@ -8,6 +8,18 @@ export default function Home() {
       title: "Chronosync",
       description: "A full-stack solution for synchronizing data across multiple platforms.",
       skills: ["Vue.js", "Express", "Backend", "Frontend", "Web Dev", "Software Dev", "C++", "PowerShell"]
+    },
+    {
+      href: '/projects/pauvocoder',
+      title: "Pauvocoder",
+      description: "An innovative audio processing application with advanced vocoding capabilities.",
+      skills: ["Audio Processing", "Signal Processing", "C++", "Digital Audio", "Real-time Processing"]
+    },
+    {
+      href: '/projects/puissancex',
+      title: "PuissanceX",
+      description: "A powerful Connect Four game implementation with advanced AI and strategic gameplay.",
+      skills: ["Game Development", "AI", "Algorithm", "Strategy", "C++", "Game Logic"]
     }
   ];
 

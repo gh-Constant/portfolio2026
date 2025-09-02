@@ -5,9 +5,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import ImageModal from '../../components/ImageModal';
+import ProjectDetails from '../../components/ProjectDetails';
+import { projectDetails } from '../../config/projectDetails';
 
 export default function ChronoSyncPage() {
   const [selectedImage, setSelectedImage] = useState<{src: string, alt: string} | null>(null);
+  const details = projectDetails.chronosync;
 
   const openImageModal = (src: string, alt: string) => {
     setSelectedImage({ src, alt });
@@ -45,11 +48,20 @@ export default function ChronoSyncPage() {
         </div>
 
         <div className="prose prose-invert mx-auto">
+          <h2 className="text-3xl font-bold mb-6">Project Details</h2>
+          <ProjectDetails details={details} />
+          
           <h2 className="text-3xl font-bold mb-6">Project Overview</h2>
           <p className="text-lg leading-relaxed mb-8">
             ChronoSync represents a modern approach to time management, specifically designed for developers and creative professionals. 
             The application seamlessly integrates web and desktop technologies to provide a unified experience across all platforms.
           </p>
+          
+          <div className="text-center my-16">
+            <div className="inline-block border-2 border-foreground/30 bg-foreground/5 px-8 py-6 rounded-lg shadow-lg">
+              <h1 className="text-5xl font-bold mb-0">My Work</h1>
+            </div>
+          </div>
           
           <h2 className="text-3xl font-bold mb-6 mt-12">Architecture</h2>
           
