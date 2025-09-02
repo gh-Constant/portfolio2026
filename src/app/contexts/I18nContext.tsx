@@ -87,7 +87,11 @@ const loadTranslations = async (lang: Language): Promise<Translations> => {
         projectTranslations[project] = projectData.default;
       } catch (error) {
         console.warn(`Failed to load ${project} translations for ${lang}:`, error);
-        projectTranslations[project] = {};
+        projectTranslations[project] = {
+          title: '',
+          description: '',
+          skills: []
+        };
       }
     }
     
