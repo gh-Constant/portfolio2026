@@ -34,22 +34,26 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
       isScrolled 
-        ? 'bg-background/95 backdrop-blur-md border-b border-foreground/10 shadow-sm' 
+        ? `bg-background/95 backdrop-blur-md border-b ${theme === 'dark' ? 'border-white/10' : 'border-black/10'} shadow-sm` 
         : 'bg-transparent'
     }`}>
-      <div className="max-w-6xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-8 py-5">
         <div className="flex justify-between items-center">
           {/* Brand Logo */}
           <Link href="/">
-            <div className="flex items-center space-x-3 hover:opacity-80 transition-opacity group cursor-pointer">
-              <div className="p-2 bg-foreground text-background rounded-lg group-hover:scale-105 transition-transform">
-                <HiCode size={20} />
+            <div className="flex items-center space-x-3 hover:opacity-90 transition-opacity duration-200 group cursor-pointer">
+              <div className="p-2.5 bg-foreground text-background rounded-lg group-hover:scale-105 transition-transform duration-200">
+                <HiCode size={22} />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight">Constant Suchet</span>
-                <span className="text-xs text-foreground/60 font-medium">Full Stack Developer</span>
+                <span className="text-xl font-bold tracking-tight">
+                  Constant Suchet
+                </span>
+                <span className="text-sm text-foreground/60 font-medium">
+                  Full Stack Developer
+                </span>
               </div>
             </div>
           </Link>
@@ -58,36 +62,40 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('projects')}
-              className="text-foreground/70 hover:text-foreground transition-colors font-medium relative group"
+              className="relative px-3 py-2 text-foreground/70 hover:text-foreground transition-colors duration-200 font-medium group"
             >
               Projects
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-foreground transition-all group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-full"></span>
             </button>
             <button 
               onClick={() => scrollToSection('skills')}
-              className="text-foreground/70 hover:text-foreground transition-colors font-medium relative group"
+              className="relative px-3 py-2 text-foreground/70 hover:text-foreground transition-colors duration-200 font-medium group"
             >
               Skills
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-foreground transition-all group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-full"></span>
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-foreground/70 hover:text-foreground transition-colors font-medium relative group"
+              className="relative px-3 py-2 text-foreground/70 hover:text-foreground transition-colors duration-200 font-medium group"
             >
               Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-foreground transition-all group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-200 group-hover:w-full"></span>
             </button>
             
             {/* Theme Toggle */}
-            <div className="ml-4 pl-4 border-l border-foreground/20">
+            <div className="ml-6 pl-6 border-l border-foreground/20">
               <button
                 onClick={toggleTheme}
-                className="text-foreground/70 hover:text-foreground transition-all p-2.5 border border-foreground/20 hover:border-foreground/40 rounded-lg hover:bg-foreground/5 group"
+                className={`p-2.5 rounded-lg border transition-all duration-200 hover:scale-105 ${
+                  theme === 'dark' 
+                    ? 'border-white/20 hover:border-white/40 hover:bg-white/10 text-white/70 hover:text-white' 
+                    : 'border-black/20 hover:border-black/40 hover:bg-black/10 text-black/70 hover:text-black'
+                }`}
                 aria-label="Toggle theme"
               >
                 {theme === 'light' ? 
-                  <MdDarkMode size={18} className="group-hover:rotate-12 transition-transform" /> : 
-                  <MdLightMode size={18} className="group-hover:rotate-12 transition-transform" />
+                  <MdDarkMode size={18} className="transition-transform duration-200 hover:rotate-12" /> : 
+                  <MdLightMode size={18} className="transition-transform duration-200 hover:rotate-12" />
                 }
               </button>
             </div>
@@ -97,10 +105,17 @@ const Navbar = () => {
           <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="text-foreground/70 hover:text-foreground transition-colors p-2 border border-foreground/20 hover:border-foreground/40 rounded-lg"
+              className={`p-2.5 rounded-lg border transition-all duration-200 ${
+                theme === 'dark' 
+                  ? 'border-white/20 hover:border-white/40 hover:bg-white/10 text-white/70 hover:text-white' 
+                  : 'border-black/20 hover:border-black/40 hover:bg-black/10 text-black/70 hover:text-black'
+              }`}
               aria-label="Toggle theme"
             >
-              {theme === 'light' ? <MdDarkMode size={18} /> : <MdLightMode size={18} />}
+              {theme === 'light' ? 
+                <MdDarkMode size={18} className="transition-transform duration-200 hover:rotate-12" /> : 
+                <MdLightMode size={18} className="transition-transform duration-200 hover:rotate-12" />
+              }
             </button>
           </div>
         </div>
